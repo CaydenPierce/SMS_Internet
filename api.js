@@ -15,7 +15,7 @@ app.use(staticRoute);
 
 const batchService = require("./services/batchService");
 
-async function sendBrowserMMS(){
+async function sendBrowserMMS(to){
 	console.log("blah");
 	await batchService("cd ./public/ && ./stego.sh");
         client.messages
@@ -23,19 +23,21 @@ async function sendBrowserMMS(){
                         body: 'Webpage:',
                         from: '+16137033776',
                         mediaUrl: ['http://24d31c3d.ngrok.io/stego.jpg'], //['http://cce2b4a4.ngrok.io/lol.png'], //['http://6a3f0b4a.ngrok.io/SMS_Internet/currentpage.html'],
-                        to: '+12269197946' //change this to your own number for testing
+                        to //change this to your own number for testing
                         })
         .then(message => console.log(message.sid));
 }
 
 function sendBrowserSMS(message, to) {
-        client.messages
+        console.log("dude");
+	client.messages
                 .create({
                         body: message,
                         from: '+16137033776',
-                        to  
+                        to
                         })
         .then(message => console.log(message.sid));
+	console.log("dudex2");
 }
 
 //sendBrowserMMS(); //DELETEME

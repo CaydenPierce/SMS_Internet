@@ -14,5 +14,6 @@ def getPage(url): #gets the raw html of the page we want
 if __name__ == "__main__":
 	page = getPage(sys.argv[1])
 	parsedPage = soup(page, "html.parser") #parse html
-	print(parsedPage)
-
+	with open("./public/currentpage.html", "w") as f:
+		f.write(str(parsedPage)) #write html to file
+	print("browser", end="")

@@ -20,7 +20,7 @@ for i in searchArray:
 # 	print("true")
 # 	search=search.replace(" ", "%20")
 
-print(search)
+# print(search)
 
 link = f"https://newsapi.org/v2/top-headlines?q={search}&from={today}&sortBy=publishedAt&apiKey=4341fffce2704e9e991191574134ed38"
 

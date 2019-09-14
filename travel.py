@@ -8,44 +8,57 @@ origin=search[0]
 destination=search[1]
 mode=search[2]
 
-print(search)
+origin=origin.replace(" ", "+")
+destination=destination.replace(" ", "+")
+mode=mode.replace(" ", "+")
+# print(origin)
+# print(destination)
+# print(mode)
 
-# for x in xrange(1,10):
-# 	pass
+
+
+# Format: py travel.py "553 powell road whitby on" "26 barnes drive ajax on" walking
+#py travel.py <"origin"> <"destination"> <"ModeOfTravel">
+
 
 regex= re.compile(r'<[^>]+>')
 def removeHTML(html):
 	return regex.sub('', html)
 
 
-link = f"https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={destination}&mode={mode}&key=AIzaSyAcQJy-FIV-bKCYsm4Q9TRP8BKfKizIbEM"
+link = "https://maps.googleapis.com/maps/api/directions/json?origin={}&destination={}&mode={}&key=AIzaSyAcQJy-FIV-bKCYsm4Q9TRP8BKfKizIbEM".format(origin, destination, mode)
 
 
 response = requests.get(link)
 response=response.json()
-routes=response['routes'][0]
-legs=routes['legs'][0]
-distance=legs['distance']['text']
 
-print("Distance: " + distance)
+if response['status']== "ZERO_RESULTS":
+	print("No results")
+	exit()
 
-time = legs['duration']['text']
+else:
+# print(len(response))
+	routes=response['routes'][0]
+	# print(response['status'])
+	legs=routes['legs'][0]
+	distance=legs['distance']['text']
 
-print("Time: " + time )
-steps=legs['steps']
-# print(len(steps))
+	print("Distance: " + distance)
 
-i=0
-while i < len(steps):
-	print(removeHTML(steps[i]['html_instructions']))
-	print('Proceed ' + steps[i]['distance']['text'] + ". Approximately " + steps[i]['duration']['text'])
+	time = legs['duration']['text']
 
-	i+=1
+	print("Time: " + time )
+	steps=legs['steps']
+	# print(len(steps))
 
-#Front End: Add + between every character before sending to backend python
+	i=0
+	while i < len(steps):
+		print(removeHTML(steps[i]['html_instructions']))
+		print('Proceed ' + steps[i]['distance']['text'] + ". Approximately " + steps[i]['duration']['text'])
+
+		i+=1
+
+# Front End: Add + between every character before sending to backend python
 
 
 # weather = response['main']['temp']-273.15
-
-
-

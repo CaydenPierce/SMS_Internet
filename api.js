@@ -13,18 +13,32 @@ const bodyParser = require('body-parser');
 var staticRoute = express.static("public");
 app.use(staticRoute);
 
-function sendBrowserMMS(){
+const batchService = require("./services/batchService");
+
+async function sendBrowserMMS(){
 	console.log("blah");
+	await batchService("cd ./public/ && ./stego.sh");
         client.messages
                 .create({
-                        body: 'Webpage: asdd',
+                        body: 'Webpage:',
                         from: '+16137033776',
-                        mediaUrl: ['http://24d31c3d.ngrok.io/SMS_Internet/currentpage.html.png'], //['http://cce2b4a4.ngrok.io/lol.png'], //['http://6a3f0b4a.ngrok.io/SMS_Internet/currentpage.html'],
+                        mediaUrl: ['http://24d31c3d.ngrok.io/stego.jpg'], //['http://cce2b4a4.ngrok.io/lol.png'], //['http://6a3f0b4a.ngrok.io/SMS_Internet/currentpage.html'],
                         to: '+12269197946' //change this to your own number for testing
                         })
         .then(message => console.log(message.sid));
 }
-sendBrowserMMS(); //DELETEME
+
+function sendBrowserSMS(message, to) {
+        client.messages
+                .create({
+                        body: message,
+                        from: '+16137033776',
+                        to  
+                        })
+        .then(message => console.log(message.sid));
+}
+
+//sendBrowserMMS(); //DELETEME
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -39,21 +53,23 @@ const displaySms = (msisdn, text) => {
     console.log('---');
 }
 
-const batchService = require("./services/batchService");
 const messageService = require("./services/messageService");
 
 const handleInboundSms = (request, response) => {
-	const params = Object.assign(request.query, request.body);
-	displaySms(params.msisdn, params.text);
-	var command = params.text;
-	var number = params.msisdn;
+	//const params = Object.assign(request.query, request.body);
+	console.log(request.body);
+	var from = request.body.From;
+	var body = request.body.Body
+	displaySms(from, body);
+	var command = body;
+	var number = from;
 
 	function callback(stdout){
 		console.log(stdout);
 		if (stdout == "browser") //run this if we are using the browser tool
 			sendBrowserMMS();
 		else if (stdout)
-			messageService(stdout, number);
+			sendBrowserSMS(stdout, number);
 	}
 
 	batchService(command).then(callback);

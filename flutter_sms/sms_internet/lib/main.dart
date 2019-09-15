@@ -1,28 +1,13 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:sms_internet/views/commandPage.dart';
-import "views/home.dart";
+import 'views/page/commandPage.dart';
+import "views/page/home.dart";
 import "services/smsService.dart";
 import 'package:sms_internet/services/commandsService.dart';
-import "views/webview.dart";
-import "views/TabedPage.dart";
-
+import "views/page/webview.dart";
+import "views/page/TabedPage.dart";
 
 
 void main() async {
-
-//  const platform = const MethodChannel('flutter.native/helper');
-//  String response = "";
-//  try {
-//    final String result = await platform.invokeMethod('helloFromNativeCode');
-//    response = result;
-//    print(result);
-//  } on PlatformException catch (e) {
-//    response = "Failed to Invoke: '${e.message}'.";
-//  }
-
   runApp(MyApp());
   initSmsListener();
 }
@@ -34,6 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'SMS Internet',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: MyHomePage(title: 'SMS Internet'),
@@ -47,6 +33,7 @@ class MyApp extends StatelessWidget {
         '/' + commands[5].name : (BuildContext context) => new CommandPage(commands[5]),
         '/' + commands[6].name : (BuildContext context) => new CommandPage(commands[6]),
         '/' + commands[7].name : (BuildContext context) => new CommandPage(commands[7]),
+        // '/' + commands[8].name : (BuildContext context) => new CommandPage(commands[8]),
       },
     );
   }

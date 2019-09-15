@@ -3,6 +3,7 @@ import 'views/page/commandPage.dart';
 import "views/page/home.dart";
 import "services/smsService.dart";
 import 'package:sms_internet/services/commandsService.dart';
+import 'views/page/stackPage.dart';
 import "views/page/webview.dart";
 import "views/page/TabedPage.dart";
 
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         '/' + commands[5].name : (BuildContext context) => new CommandPage(commands[5]),
         '/' + commands[6].name : (BuildContext context) => new CommandPage(commands[6]),
         '/' + commands[7].name : (BuildContext context) => new CommandPage(commands[7]),
-        // '/' + commands[8].name : (BuildContext context) => new CommandPage(commands[8]),
+        '/' + commands[8].name : (BuildContext context) => new StackPage(),
       },
     );
   }

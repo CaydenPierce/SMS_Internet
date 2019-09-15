@@ -9,5 +9,6 @@ List<Command> commands = [
   Command(name: "Thesaurus", command: "python3 Thesaurus.py ", arguments: ["word"]),
   Command(name: "Translate", command: "python3 translate.py", arguments: ["Text to be Translated ", "Target Language"]),
   Command(name: "Bash", command: "", arguments: ["cmd"]),
+  Command(name: "Recent Commands", command: "", arguments: [""]),
 ];
 

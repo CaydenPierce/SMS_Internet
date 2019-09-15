@@ -43,6 +43,7 @@ void initSmsListener() {
       message = message.substring(38, message.length);
 
       appState.smsResponse = message;
+      appState.addResponse(message);
       if(_callback != null) {
         _callback(message);
       }

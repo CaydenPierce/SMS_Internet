@@ -83,6 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
               commandButton(context, commands[5]),
               commandButton(context, commands[6]),
               commandButton(context, commands[7]),
+              commandButton(context, commands[8]),
 
             ],
           ),

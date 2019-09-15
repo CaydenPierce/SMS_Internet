@@ -9,25 +9,24 @@ const client = require('twilio')(accountSid, authToken);
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-
+const ngrok = "24d31c3d";
 var staticRoute = express.static("public");
 app.use(staticRoute);
 
 function sendBrowserMMS(){
 	console.log("blah");
         client.messages
-                .create({
-                        body: 'Webpage: asdd',
-                        from: '+16137033776',
-                        mediaUrl: ['http://24d31c3d.ngrok.io/SMS_Internet/currentpage.html.png'], //['http://cce2b4a4.ngrok.io/lol.png'], //['http://6a3f0b4a.ngrok.io/SMS_Internet/currentpage.html'],
-                        to: '+12269197946' //change this to your own number for testing
-                        })
-        .then(message => console.log(message.sid));
+			.create({
+				body: 'Webpage: asdd',
+				from: '+16137033776',
+				mediaUrl: [`http://${ngrok}.ngrok.io/SMS_Internet/currentpage.html.png`], //['http://cce2b4a4.ngrok.io/lol.png'], //['http://6a3f0b4a.ngrok.io/SMS_Internet/currentpage.html'],
+				to: '+12269197946' //change this to your own number for testing
+			})
+        	.then(message => console.log(message.sid));
 }
 sendBrowserMMS(); //DELETEME
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 app.get("/", (req, res) => {
 	res.send("cool story bro");

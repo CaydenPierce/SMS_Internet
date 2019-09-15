@@ -22,7 +22,7 @@ async function sendBrowserMMS(to){
                 .create({
                         body: 'Webpage:',
                         from: '+16137033776',
-                        mediaUrl: ['http://24d31c3d.ngrok.io/stego.jpg'], //['http://cce2b4a4.ngrok.io/lol.png'], //['http://6a3f0b4a.ngrok.io/SMS_Internet/currentpage.html'],
+                        mediaUrl: ['http://104.197.132.155:9001/stego.jpg'], //['http://cce2b4a4.ngrok.io/lol.png'], //['http://6a3f0b4a.ngrok.io/SMS_Internet/currentpage.html'],
                         to //change this to your own number for testing
                         })
         .then(message => console.log(message.sid));
@@ -69,7 +69,7 @@ const handleInboundSms = (request, response) => {
 	function callback(stdout){
 		console.log(stdout);
 		if (stdout == "browser") //run this if we are using the browser tool
-			sendBrowserMMS();
+			sendBrowserMMS(number);
 		else if (stdout)
 			sendBrowserSMS(stdout, number);
 	}

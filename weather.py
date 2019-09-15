@@ -20,7 +20,7 @@ weather = response['main']['temp']-273.15
 
 
 if isinstance(weather, float):
-	print (round(weather, 2))
+	print (str(round(weather, 2))+"°C in {}".format(search))
 
 else:
 	print("Sorry, no city found")

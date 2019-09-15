@@ -19,15 +19,7 @@ async function sendBrowserMMS(to){
 	console.log("blah");
 	await batchService("cd ./public/ && ./stego.sh");
         client.messages
-<<<<<<< HEAD
-			.create({
-				body: 'Webpage: asdd',
-				from: '+16137033776',
-				mediaUrl: [`http://${ngrok}.ngrok.io/SMS_Internet/currentpage.html.png`], //['http://cce2b4a4.ngrok.io/lol.png'], //['http://6a3f0b4a.ngrok.io/SMS_Internet/currentpage.html'],
-				to: '+12269197946' //change this to your own number for testing
-			})
-        	.then(message => console.log(message.sid));
-=======
+
                 .create({
                         body: 'Webpage:',
                         from: '+16137033776',
@@ -47,7 +39,6 @@ function sendBrowserSMS(message, to) {
                         })
         .then(message => console.log(message.sid));
 	console.log("dudex2");
->>>>>>> dad1885326360be8be84e8cb68b79411d041e97d
 }
 
 //sendBrowserMMS(); //DELETEME

@@ -71,7 +71,10 @@ class _MyHomePageState extends State<MyHomePage> {
             // mainAxisSize: MainAxisSize.max,
 
             children: <Widget >[
-              Text('SMS INTERNET', style: BigTextWhite),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Center(child:Text('Commands', style: BigTextWhite)),
+              ),
               commandButton(context, commands[0]),
               commandButton(context, commands[1]),
               commandButton(context, commands[2]),

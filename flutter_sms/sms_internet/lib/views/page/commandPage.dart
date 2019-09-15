@@ -84,6 +84,20 @@ class _CommandPageState extends State<CommandPage> {
     );
   }
 
+  Widget _getResponse() {
+    if (appState.smsResponse != "") {
+      return MyCard(
+        
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Text(appState.smsResponse, style: BodyTextWhite,)
+        )
+      );
+    }
+
+    return Text(appState.smsResponse);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +125,7 @@ class _CommandPageState extends State<CommandPage> {
             
             Expanded(
               child: ListView(
-                children: [Text(appState.smsResponse)]
+                children: [_getResponse()]
               )
             )
 

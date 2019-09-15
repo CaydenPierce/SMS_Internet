@@ -3,8 +3,12 @@ import requests
 import json
 
 searchArray = sys.argv[1:]
+
 search=searchArray[0]
 # print(len(searchArray))
+if '.' in search:
+	print("Please Use a Single Word")
+	exit()
 
 if len(searchArray)>1:
 	print("Please use a single word")
@@ -18,6 +22,7 @@ response=response.json()
 # print(response)
 
 if len(response)==0:
+	# print(len(response))
 	print("Word Not Found")
 	exit()
 # response=json.loads(response)

@@ -4,6 +4,10 @@ import re
 
 search = sys.argv[1:]
 
+
+if(len(search)!=3):
+	exit()
+
 origin=search[0]
 destination=search[1]
 mode=search[2]
@@ -32,8 +36,13 @@ link = "https://maps.googleapis.com/maps/api/directions/json?origin={}&destinati
 response = requests.get(link)
 response=response.json()
 
+# print(response['status'])
+
 if response['status']== "ZERO_RESULTS":
-	print("No results")
+	print("No results, try specifying addresses")
+	exit()
+if (response['status'] == "NOT_FOUND") or (response['status'] == "INVALID_REQUEST"):
+	print("Invalid Request")
 	exit()
 
 else:
@@ -58,7 +67,7 @@ else:
 
 		i+=1
 
-# Front End: Add + between every character before sending to backend python
+# # Front End: Add + between every character before sending to backend python
 
 
-# weather = response['main']['temp']-273.15
+# # weather = response['main']['temp']-273.15

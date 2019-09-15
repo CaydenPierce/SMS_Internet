@@ -40,7 +40,7 @@ void initSmsListener() {
 
     if (msg.address == twilio) {
       String message = msg.body;
-      message = message.replaceAll("Send from your Twilio trian account - ", "");
+      message = message.substring(38, message.length);
 
       appState.smsResponse = message;
       if(_callback != null) {

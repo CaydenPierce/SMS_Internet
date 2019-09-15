@@ -5,8 +5,10 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.17.1",
+    "fb": "^2.0.0",
     "nexmo": "^2.4.2",
     "nodemon": "^1.19.2",
+    "requirejs": "^2.3.6",
     "twilio": "^3.34.0"
   },
   "devDependencies": {},

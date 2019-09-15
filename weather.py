@@ -16,11 +16,15 @@ if response['cod']=="404":
 # print(response['cod'])
 
 weather = response['main']['temp']-273.15
+# humidity =response['main']['humidity']
 # weather = "hey"
 
 
 if isinstance(weather, float):
-	print (str(round(weather, 2))+"°C in {}".format(search))
+	weather=str(round(weather))
+	print(weather + " Degrees Celius in {}".format(search))
+	print(response['weather'][0]['description'])
+	# print()
 
 else:
 	print("Sorry, no city found")

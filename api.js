@@ -30,7 +30,7 @@ async function sendBrowserMMS(to){
 }
 
 function sendBrowserSMS(message, to) {
-        console.log("dude");
+        //console.log("dude");
 	client.messages
                 .create({
                         body: message,
@@ -38,7 +38,7 @@ function sendBrowserSMS(message, to) {
                         to
                         })
         .then(message => console.log(message.sid));
-	console.log("dudex2");
+	//console.log("dudex2");
 }
 
 //sendBrowserMMS(); //DELETEME
